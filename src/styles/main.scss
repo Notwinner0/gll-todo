@@ -1,0 +1,339 @@
+// styles from https://github.com/gleam-lang/website
+
+@font-face {
+  font-family: "Cascadia Mono";
+  font-display: swap;
+  src: url("../assets/fonts/CascadiaMono.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-display: swap;
+  font-weight: 400;
+  src: url("../assets/fonts/Lexend.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-display: swap;
+  font-weight: 700;
+  src: url("../assets/fonts/Lexend-700.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Outfit";
+  font-display: swap;
+  src: url("../assets/fonts/Outfit.ttf") format("truetype");
+}
+
+:root {
+    --font-family-normal: "Outfit", sans-serif;
+    --font-family-title: "Lexend", sans-serif;
+    /*--font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;*/
+
+    --color-charcoal: #2f2f2f;
+    --color-lukewarm-charcoal: #313546;
+    --color-warm-charcoal: #616682;
+    --color-underwater-blue: #292d3e;
+    --color-black: #1e1e1e;
+    --color-blacker: #151515;
+    --color-text-main: #F0EEFF;
+    --color-text-highlight: #fff;
+    --color-white: #fefefc;
+    --color-faff-pink: #ffaff3;
+    --color-aged-plastic-yellow: #fffbe8;
+    --color-unnamed-blue: #a6f0fc;
+    --color-unexpected-aubergine: #584355;
+
+    --color-code-blue: #9ce7ff;
+    --color-code-green: #c8ffa7;
+    --color-code-grey: #d4d4d4;
+    --color-code-dark-grey: #848484;
+    --color-code-yellow: #fdffab;
+    --color-code-pink: var(--color-faff-pink);
+    --color-code-red: #ff6262;
+    --color-code-orange: #ffd596;
+    --color-code-light-pink: #ffddfa;
+
+    --opacity-mid: 0.65;
+
+    --width-content: 960px;
+
+    /* TODO: condense these into a few appopriatedly named variables */
+    --font-size-small: 12px;
+    --font-size-code: 16px;
+    --font-size-normal: 18px;
+    --font-size-navbar: 18px;
+    --font-size-hero-button: 24px;
+    --font-size-pair-text: 22px;
+    --font-size-friendly-text: 24px;
+    --font-size-still-here-subtitle: 24px;
+    --font-size-still-here-button: 24px;
+    --font-size-hero-subtitle: 24px;
+    --font-size-logo: 28px;
+    --font-size-hero: 36px;
+    --font-size-pair-title: 36px;
+    --font-size-hero-title: 36px;
+    --font-size-still-here-title: 36px;
+    --font-size-footer-logo: 36px;
+    --font-size-friendly-title: 48px;
+    --font-size-sponsors-title: 48px;
+
+    --font-weight-normal: 400;
+    --font-weight-title-bold: 700;
+
+    --gap-1: 10px;
+    --gap-2: calc(var(--gap-1) * 2);
+    --gap-3: calc(var(--gap-1) * 3);
+    --gap-4: calc(var(--gap-1) * 4);
+    --gap-5: calc(var(--gap-1) * 5);
+    --gap-6: calc(var(--gap-1) * 6);
+
+    --waves-height: 100px;
+    --waves-width: 1200px;
+
+    --sponsor-size: 50px;
+    --sponsors-gap: var(--gap-1);
+    --sponsors-max-row-count: 8;
+    --sponsors-row-height: calc(var(--sponsor-size) + var(--sponsors-gap));
+    /* If this is renamed it must also be renamed in the JavaScript */
+    --sponsors-max-height: calc(var(--sponsors-row-height) * var(--sponsors-max-row-count));
+    --sponsors-expand-transition: all 2s ease;
+
+    --label-size: 12px;
+    --field-colour: #FFFFFF;
+    --label-colour: #2F2F2F;
+    --button-colour: #6E54D7;
+    --button-text-colour: #FFFFFF;
+    --field-border-colour: #CED4DA;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-underwater-blue);
+  color: var(--color-text-main);
+  font-family: var(--font-family-normal);
+  font-size: var(--font-size-normal);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-title);
+  font-weight: var(--font-weight-normal);
+}
+
+p {
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.content > *:first-child {
+  margin-top: 0;
+}
+
+a:visited,
+a {
+  color: var(--color-white);
+  text-decoration-color: var(--color-faff-pink);
+}
+
+pre {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  padding: 5px;
+}
+
+
+
+.footer {
+  padding: var(--gap-4) 0;
+  background-color: var(--color-white);
+  color: var(--color-blacker);
+  font-family: var(--font-family-title);
+}
+
+.footer a,
+.footer a:visited {
+  color: var(--color-blacker);
+}
+
+.footer .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--gap-4);
+}
+
+.footer .logo {
+  font-size: var(--font-size-footer-logo);
+}
+
+.footer li {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--gap-2);
+  opacity: 0.9;
+}
+
+.footer ul {
+  padding: 0;
+}
+
+.footer .first {
+  flex: 1;
+  max-width: 250px;
+}
+
+.footer .middle {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.footer .middle li {
+  width: 150px;
+  margin-right: var(--gap-4);
+}
+
+.footer .last {
+  text-align: right;
+}
+
+.footer .last li {
+  margin-bottom: var(--gap-1);
+  opacity: 0.6;
+  font-size: var(--font-size-small);
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:visited {
+  color: var(--color-blacker);
+}
+
+.header h1 {
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-hero-title);
+    font-weight: var(--font-weight-title-bold);
+    // margin: var(--gap-4) 0;
+    text-align: center;
+    color: var(--color-blacker)
+}
+
+// original styles
+
+.header {
+    background-color: var(--color-aged-plastic-yellow);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .waves {
+        object-fit: fill;
+        object-position: 50% calc(50% + 1px);
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+$pink-transparent: #ffaff38a;
+
+.todoapp {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.todomaker {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    max-width: 520px;
+
+    .new-todo {
+        font-family: var(--font-family);
+        font-size: var(--font-size-normal) !important;
+        border-radius: 100px 0 0 100px;
+        background-color: var(--field-colour);
+        line-height: 1.6;
+        padding: 6px 20px;
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: none;
+        outline: none;
+
+        min-width: 200px;
+        flex-grow: 1;
+
+        transition: box-shadow 120ms ease-in-out;
+
+        &:focus {
+            box-shadow: none;
+            /* Убираем, если не работает */
+            outline: 2px solid $pink-transparent;
+            /* Используем outline */
+            outline-offset: 0px;
+            /* Дополнительно, чтобы отодвинуть обводку от input */
+        }
+    }
+
+    .invert {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        // border: none;
+        outline: none;
+        padding: 6px 12px;
+
+        font-family: var(--font-family);
+        font-size: var(--font-size-normal) !important;
+        border-radius: 0 100px 100px 0;
+        background-color: var(--color-unexpected-aubergine);
+        color: var(--button-text-colour);
+        line-height: 1.5;
+        cursor: pointer;
+
+        flex-grow: 1;
+        vertical-align: middle;
+
+        border: 1px solid transparent;
+
+        &:active {
+            box-shadow: none;
+            /* Убираем, если не работает */
+            outline: 2px solid $pink-transparent;
+            /* Используем outline */
+            outline-offset: 0px;
+            /* Дополнительно, чтобы отодвинуть обводку от input */
+        }
+    }
+}

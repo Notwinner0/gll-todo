@@ -1,0 +1,1 @@
+import '../styles/main.scss'; // Импорт SCSS в JS (Webpack обработает)

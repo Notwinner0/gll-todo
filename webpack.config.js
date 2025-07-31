@@ -6,8 +6,8 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
-// Укажите здесь точное имя вашего репозитория на GitHub
-const REPOSITORY_NAME = 'gll-todo'; // !!! ЗАМЕНИТЕ НА ИМЯ ВАШЕГО РЕПОЗИТОРИЯ !!!
+
+const REPOSITORY_NAME = 'gll-todo';
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
