@@ -370,6 +370,12 @@ footer {
     position: relative;
     overflow: hidden;
 
+    &.fading-out {
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, height 0.5s ease-in-out, margin 0.5s ease-in-out;
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
     // Обёртка текста, чтобы не перекрывался псевдоэлементами
     span {
       position: relative;
