@@ -15,7 +15,20 @@
                 <input name="task" type="text" class="new-todo" required autofocus placeholder="What needs to be done?">
                 <button class="invert">Invert</button>
             </div>
-            <img src="./assets/images/waves.svg" alt="" class="waves">
+            <svg viewBox="0 0 2 1" preserveAspectRatio="none">
+                <defs>
+                    <path id="w" d="
+              m0 1v-.5 
+              q.5.5 1 0
+              t1 0 1 0 1 0
+              v.5z" />
+                </defs>
+                <g>
+                    <use href="#w" y=".0" fill="#292d3e" />
+                    <use href="#w" y=".1" fill="#292d3e" fill-opacity="0.20"/>
+                    <use href="#w" y=".2" fill="#292d3e" fill-opacity="0.40" />
+                </g>
+            </svg>
         </header>
         <main class="main">
             <ul class="todo-list">

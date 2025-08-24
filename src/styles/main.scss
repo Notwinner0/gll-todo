@@ -1,5 +1,5 @@
 // styles from https://github.com/gleam-lang/website
-
+@use "sass:color";
 @font-face {
   font-family: "Cascadia Mono";
   font-display: swap;
@@ -26,87 +26,86 @@
   src: url("../assets/fonts/Outfit.ttf") format("truetype");
 }
 
-:root {
-    --font-family-normal: "Outfit", sans-serif;
-    --font-family-title: "Lexend", sans-serif;
-    /*--font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;*/
+// Sass Variables
+$font-family-normal: "Outfit", sans-serif;
+$font-family-title: "Lexend", sans-serif;
+// $font-family-monospace: "Cascadia Mono" "Roboto Mono", monospace;
 
-    --color-charcoal: #2f2f2f;
-    --color-lukewarm-charcoal: #313546;
-    --color-warm-charcoal: #616682;
-    --color-underwater-blue: #292d3e;
-    --color-black: #1e1e1e;
-    --color-blacker: #151515;
-    --color-text-main: #F0EEFF;
-    --color-text-highlight: #fff;
-    --color-white: #fefefc;
-    --color-faff-pink: #ffaff3;
-    --color-aged-plastic-yellow: #fffbe8;
-    --color-unnamed-blue: #a6f0fc;
-    --color-unexpected-aubergine: #584355;
+$color-charcoal: #2f2f2f;
+$color-lukewarm-charcoal: #313546;
+$color-warm-charcoal: #616682;
+$color-underwater-blue: #292d3e;
+$color-black: #1e1e1e;
+$color-blacker: #151515;
+$color-text-main: #F0EEFF;
+$color-text-highlight: #fff;
+$color-white: #fefefc;
+$color-faff-pink: #ffaff3;
+$color-aged-plastic-yellow: #fffbe8;
+$color-unnamed-blue: #a6f0fc;
+$color-unexpected-aubergine: #584355;
 
-    --color-code-blue: #9ce7ff;
-    --color-code-green: #c8ffa7;
-    --color-code-grey: #d4d4d4;
-    --color-code-dark-grey: #848484;
-    --color-code-yellow: #fdffab;
-    --color-code-pink: var(--color-faff-pink);
-    --color-code-red: #ff6262;
-    --color-code-orange: #ffd596;
-    --color-code-light-pink: #ffddfa;
+$color-code-blue: #9ce7ff;
+$color-code-green: #c8ffa7;
+$color-code-grey: #d4d4d4;
+$color-code-dark-grey: #848484;
+$color-code-yellow: #fdffab;
+$color-code-pink: $color-faff-pink;
+$color-code-red: #ff6262;
+$color-code-orange: #ffd596;
+$color-code-light-pink: #ffddfa;
 
-    --opacity-mid: 0.65;
+$opacity-mid: 0.65;
 
-    --width-content: 960px;
+$width-content: 960px;
 
-    /* TODO: condense these into a few appopriatedly named variables */
-    --font-size-small: 12px;
-    --font-size-code: 16px;
-    --font-size-normal: 18px;
-    --font-size-navbar: 18px;
-    --font-size-hero-button: 24px;
-    --font-size-pair-text: 22px;
-    --font-size-friendly-text: 24px;
-    --font-size-still-here-subtitle: 24px;
-    --font-size-still-here-button: 24px;
-    --font-size-hero-subtitle: 24px;
-    --font-size-logo: 28px;
-    --font-size-hero: 36px;
-    --font-size-pair-title: 36px;
-    --font-size-hero-title: 36px;
-    --font-size-still-here-title: 36px;
-    --font-size-footer-logo: 36px;
-    --font-size-friendly-title: 48px;
-    --font-size-sponsors-title: 48px;
+// TODO: condense these into a few appropriately named variables
+$font-size-small: 12px;
+$font-size-code: 16px;
+$font-size-normal: 18px;
+$font-size-navbar: 18px;
+$font-size-hero-button: 24px;
+$font-size-pair-text: 22px;
+$font-size-friendly-text: 24px;
+$font-size-still-here-subtitle: 24px;
+$font-size-still-here-button: 24px;
+$font-size-hero-subtitle: 24px;
+$font-size-logo: 28px;
+$font-size-hero: 36px;
+$font-size-pair-title: 36px;
+$font-size-hero-title: 36px;
+$font-size-still-here-title: 36px;
+$font-size-footer-logo: 36px;
+$font-size-friendly-title: 48px;
+$font-size-sponsors-title: 48px;
 
-    --font-weight-normal: 400;
-    --font-weight-title-bold: 700;
+$font-weight-normal: 400;
+$font-weight-title-bold: 700;
 
-    --gap-1: 10px;
-    --gap-2: calc(var(--gap-1) * 2);
-    --gap-3: calc(var(--gap-1) * 3);
-    --gap-4: calc(var(--gap-1) * 4);
-    --gap-5: calc(var(--gap-1) * 5);
-    --gap-6: calc(var(--gap-1) * 6);
+$gap-1: 10px;
+$gap-2: $gap-1 * 2;
+$gap-3: $gap-1 * 3;
+$gap-4: $gap-1 * 4;
+$gap-5: $gap-1 * 5;
+$gap-6: $gap-1 * 6;
 
-    --waves-height: 100px;
-    --waves-width: 1200px;
+$waves-height: 100px;
+$waves-width: 1200px;
 
-    --sponsor-size: 50px;
-    --sponsors-gap: var(--gap-1);
-    --sponsors-max-row-count: 8;
-    --sponsors-row-height: calc(var(--sponsor-size) + var(--sponsors-gap));
-    /* If this is renamed it must also be renamed in the JavaScript */
-    --sponsors-max-height: calc(var(--sponsors-row-height) * var(--sponsors-max-row-count));
-    --sponsors-expand-transition: all 2s ease;
+$sponsor-size: 50px;
+$sponsors-gap: $gap-1;
+$sponsors-max-row-count: 8;
+$sponsors-row-height: $sponsor-size + $sponsors-gap;
+// If this is renamed it must also be renamed in the JavaScript
+$sponsors-max-height: $sponsors-row-height * $sponsors-max-row-count;
+$sponsors-expand-transition: all 2s ease;
 
-    --label-size: 12px;
-    --field-colour: #FFFFFF;
-    --label-colour: #2F2F2F;
-    --button-colour: #6E54D7;
-    --button-text-colour: #FFFFFF;
-    --field-border-colour: #CED4DA;
-}
+$label-size: 12px;
+$field-colour: #FFFFFF;
+$label-colour: #2F2F2F;
+$button-colour: #6E54D7;
+$button-text-colour: #FFFFFF;
+$field-border-colour: #CED4DA;
 
 * {
   box-sizing: border-box;
@@ -115,10 +114,10 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: var(--color-underwater-blue);
-    color: var(--color-text-main);
-    font-family: var(--font-family-normal);
-    font-size: var(--font-size-normal);
+    background-color: $color-underwater-blue;
+    color: $color-text-main;
+    font-family: $font-family-normal;
+    font-size: $font-size-normal;
 
     min-height: 100vh; // растяжка на всю высоту
     display: flex;
@@ -134,8 +133,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-family-title);
-  font-weight: var(--font-weight-normal);
+  font-family: $font-family-title;
+  font-weight: $font-weight-normal;
 }
 
 p {
@@ -149,8 +148,8 @@ p {
 
 a:visited,
 a {
-  color: var(--color-white);
-  text-decoration-color: var(--color-faff-pink);
+  color: $color-white;
+  text-decoration-color: $color-faff-pink;
 }
 
 pre {
@@ -169,15 +168,15 @@ td {
 
 
 .footer, footer {
-  padding: var(--gap-4) 0;
-  background-color: var(--color-white);
-  color: var(--color-blacker);
-  font-family: var(--font-family-title);
+  padding: $gap-4 0;
+  background-color: $color-white;
+  color: $color-blacker;
+  font-family: $font-family-title;
 }
 
 .footer a,
 .footer a:visited, footer a, footer a:visited {
-  color: var(--color-blacker);
+  color: $color-blacker;
 }
 
 .footer .content {
@@ -185,17 +184,17 @@ td {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--gap-4);
+  gap: $gap-4;
 }
 
 .footer .logo {
-  font-size: var(--font-size-footer-logo);
+  font-size: $font-size-footer-logo;
 }
 
 .footer li {
   list-style: none;
   padding: 0;
-  margin-bottom: var(--gap-2);
+  margin-bottom: $gap-2;
   opacity: 0.9;
 }
 
@@ -217,7 +216,7 @@ td {
 
 .footer .middle li {
   width: 150px;
-  margin-right: var(--gap-4);
+  margin-right: $gap-4;
 }
 
 .footer .last {
@@ -225,9 +224,9 @@ td {
 }
 
 .footer .last li {
-  margin-bottom: var(--gap-1);
+  margin-bottom: $gap-1;
   opacity: 0.6;
-  font-size: var(--font-size-small);
+  font-size: $font-size-small;
 }
 
 .footer a {
@@ -235,35 +234,58 @@ td {
 }
 
 .footer a:visited {
-  color: var(--color-blacker);
+  color: $color-blacker;
 }
 
 .header h1 {
-    font-family: var(--font-family-title);
-    font-size: var(--font-size-hero-title);
-    font-weight: var(--font-weight-title-bold);
-    // margin: var(--gap-4) 0;
+    font-family: $font-family-title;
+    font-size: $font-size-hero-title;
+    font-weight: $font-weight-title-bold;
+    // margin: $gap-4 0;
     text-align: center;
-    color: var(--color-blacker)
+    color: $color-blacker;
 }
 
 // original styles
 
 .header {
-    background-color: var(--color-aged-plastic-yellow);
+    background-color: $color-aged-plastic-yellow;
     width: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .waves {
-        object-fit: fill;
-        object-position: 50% calc(50% + 1px);
-        display: block;
-        margin: 0;
-        padding: 0;
-        max-width: 100%;
+
+    svg {
+      width: 100vw;
+      height: 10vh;
+    }
+    
+    $mult: 10;
+
+    use {
+      animation:move-forever calc(2s * $mult) linear infinite;
+      &:nth-child(2){ animation-duration:calc(2.5s * $mult); animation-delay:-1.5s; }
+      &:nth-child(1){ animation-duration:calc(5s * $mult)}
+    }
+
+    @keyframes move-forever{
+      0%{transform: translate(-2px , 0)}
+      100%{transform: translate( 0px , 0)} 
+    }
+}
+
+/* Keyframes for wave animation */
+@keyframes wave-animation {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-5%); /* Move slightly to the left */
+    }
+    100% {
+        transform: translateX(0);
     }
 }
 
@@ -286,10 +308,10 @@ $pink-transparent: #ffaff38a;
     max-width: 520px;
 
     .new-todo {
-        font-family: var(--font-family);
-        font-size: var(--font-size-normal) !important;
+        font-family: $font-family-normal;
+        font-size: $font-size-normal !important;
         border-radius: 100px 0 0 100px;
-        background-color: var(--field-colour);
+        background-color: $field-colour;
         line-height: 1.6;
         padding: 6px 20px;
 
@@ -322,11 +344,11 @@ $pink-transparent: #ffaff38a;
         outline: none;
         padding: 6px 12px;
 
-        font-family: var(--font-family);
-        font-size: var(--font-size-normal) !important;
+        font-family: $font-family-normal;
+        font-size: $font-size-normal !important;
         border-radius: 0 100px 100px 0;
-        background-color: var(--color-unexpected-aubergine);
-        color: var(--button-text-colour);
+        background-color: $color-unexpected-aubergine;
+        color: $button-text-colour;
         line-height: 1.5;
         cursor: pointer;
 
@@ -334,6 +356,11 @@ $pink-transparent: #ffaff38a;
         vertical-align: middle;
 
         border: 1px solid transparent;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for hover */
+
+        &:hover {
+            background-color: color.adjust($color-unexpected-aubergine, $lightness: -10%); /* Darken on hover */
+        }
 
         &:active {
             box-shadow: none;
@@ -361,7 +388,7 @@ footer {
   .task {
     text-align: justify;
     padding: 20px 10px;
-    color: var(--color-blacker);
+    color: $color-blacker;
     letter-spacing: 0.5px;
     line-height: 1.3;
     border-radius: 20px;
@@ -369,6 +396,12 @@ footer {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out; /* Add transition for hover */
+
+    &:hover {
+      transform: translateY(-3px); /* Lift slightly on hover */
+      opacity: 0.9; /* Slightly fade on hover */
+    }
 
     &.fading-out {
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, height 0.5s ease-in-out, margin 0.5s ease-in-out;
@@ -387,8 +420,8 @@ footer {
       top: 10px;
       right: 10px;
       font-size: 12px;
-      color: var(--color-blacker);
-    //   background: var(--color-black);
+      color: $color-blacker;
+    //   background: $color-black;
       padding: 2px 6px;
       z-index: 3;
     }
@@ -403,7 +436,7 @@ footer {
     width: 100%;
     height: 100%;
     background: radial-gradient(at right top, #D5FE1800, #ff00005b),
-                linear-gradient(180deg, var(--color-faff-pink) 0%, var(--color-white) 250%);
+                linear-gradient(180deg, $color-faff-pink 0%, $color-white 250%);
     opacity: 1;
     transition: opacity 0.4s ease;
     z-index: 0;
@@ -418,7 +451,7 @@ footer {
     width: 100%;
     height: 100%;
     background: radial-gradient(at right top, #D5FE1800, #6aff0050),
-                linear-gradient(180deg, var(--color-faff-pink) 0%, var(--color-white) 250%);
+                linear-gradient(180deg, $color-faff-pink 0%, $color-white 250%);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 0;
@@ -472,11 +505,11 @@ footer {
         outline: none;
         padding: 6px 12px;
 
-        font-family: var(--font-family);
-        font-size: var(--font-size-normal) !important;
+        font-family: $font-family-normal;
+        font-size: $font-size-normal !important;
         border-radius: 100px;
-        background-color: var(--color-unexpected-aubergine);
-        color: var(--button-text-colour);
+        background-color: $color-unexpected-aubergine;
+        color: $button-text-colour;
         line-height: 1.5;
         cursor: pointer;
 
@@ -486,7 +519,12 @@ footer {
         border: 1px solid transparent;
 
         text-decoration: none;
-        transition: background-color color 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for hover */
+
+        &:hover {
+            background-color: color.adjust($color-unexpected-aubergine, $lightness: -10%); /* Darken on hover */
+        }
+
         &:active {
             box-shadow: none;
             /* Убираем, если не работает */
@@ -497,11 +535,11 @@ footer {
         }
 
         &.selected {
-            background-color: var(--color-code-light-pink);
-            color: var(--color-blacker);
+            background-color: $color-code-light-pink;
+            color: $color-blacker;
         }
     }
-    
+
     button {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -510,11 +548,17 @@ footer {
         outline: none;
         padding: 6px 12px;
 
-        font-family: var(--font-family);
-        font-size: var(--font-size-normal) !important;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for hover */
+
+        &:hover {
+            background-color: color.adjust($color-unexpected-aubergine, $lightness: -10%); /* Darken on hover */
+        }
+
+        font-family: $font-family-normal;
+        font-size: $font-size-normal !important;
         border-radius: 100px;
-        background-color: var(--color-unexpected-aubergine);
-        color: var(--button-text-colour);
+        background-color: $color-unexpected-aubergine;
+        color: $button-text-colour;
         line-height: 1.5;
         cursor: pointer;
 
