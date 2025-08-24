@@ -1,9 +1,11 @@
 import '../styles/main.scss'; // Импорт SCSS в JS (Webpack обработает)
 
 // const tasks = document.querySelectorAll('.task');
-const inputBox = document.querySelector('.new-todo')
-const todoList = document.querySelector('.todo-list')
-const clearButton = document.querySelector('.clear-completed')
+const elements = {
+    inputBox: document.querySelector('.new-todo'),
+    todoList: document.querySelector('.todo-list'),
+    clearButton: document.querySelector('.clear-completed')
+}
 
 function fadingRemove(element) {
     element.classList.add('fading-out')
@@ -15,37 +17,46 @@ function fadingRemove(element) {
 function addTask(content) {
     let task = document.createElement('li')
     task.classList.add('task')
-    task.innerHTML = `<span>${content}</span><div class="status-label">unfinished</div>`
-    task.addEventListener('click', () => {
+
+    let contentSpan = document.createElement('span');
+    contentSpan.textContent = content;
+
+    let statusLabel = document.createElement('div');
+    statusLabel.classList.add('status-label');
+    statusLabel.textContent = 'unfinished';
+
+    task.appendChild(contentSpan);
+    task.appendChild(statusLabel);
+
+    // task.innerHTML = `<span>${content}</span><div class="status-label">unfinished</div>`
+    statusLabel.addEventListener('click', () => {
         task.classList.toggle('done');
         var taskLabel = task.querySelector('.status-label');
         taskLabel.textContent = task.classList.contains('done') ? 'finished' : 'unfinished';
     });
+
+    task.addEventListener('dblclick', () => {
+        console.log('start implementing proper mvc? this is getting quite messy.')
+    });
     addHoldToRemove(task)
-    todoList.appendChild(task)
+    elements.todoList.appendChild(task)
 }
 
-inputBox.addEventListener('keydown', (event) => {
+elements.inputBox.addEventListener('keydown', (event) => {
     if (event.key == 'Enter') {
-        addTask(inputBox.value)
+        addTask(elements.inputBox.value)
     }
 })
 
 
 function clearCompleted() {
-    let tasks = document.querySelectorAll('.task')
-    let toDelete = []
-    if (tasks) {
-        tasks.forEach(task => {
-            task.classList.contains('done') ? toDelete.push(task) : ''
-        });
-    }
-    toDelete.forEach(task => {
+    let tasks = document.querySelectorAll('.task.done')
+    tasks.forEach(task => {
         fadingRemove(task)
     })
 }
 
-clearButton.addEventListener('click', () => {
+elements.clearButton.addEventListener('click', () => {
     clearCompleted()
 })
 
@@ -69,3 +80,4 @@ function addHoldToRemove(element) {
 }
 
 //TODO: dblclick to edit, if mouse out - save, enter - save
+
