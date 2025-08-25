@@ -1,4 +1,4 @@
-import '../styles/main.scss'; // Импорт SCSS в JS (Webpack обработает)
+// TODO: remove, deprecated
 
 // const tasks = document.querySelectorAll('.task');
 const elements = {

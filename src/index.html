@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-framework="javascript-es6">
-<meta charset="UTF-8" />
-<meta name="description" content="gll-todo written with JavaScript es6 features." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<title>gll-todo: JavaScript Es6 Webpack</title>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="gll-todo written with JavaScript es6 features." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>gll-todo: JavaScript Es6 Webpack</title>
+
 </head>
 
 <body>
@@ -32,7 +35,16 @@
         </header>
         <main class="main">
             <ul class="todo-list">
-                <!-- <li class="task"><span>content</span><div class="status-label">unfinished</div></li> -->
+                <li data-id="(id)" class="completed">
+                    <div class="view">
+                        <span>content content content content content content content content content content content content content content content content </span>
+                        <div class="status-label">finished</div>
+                        <div>
+                            <button class="toggle" checked><span class="iconify" data-icon="mdi-checkbox-marked"></span></button>
+                            <button class="destroy"><span class="iconify" data-icon="mdi-delete"></span></button>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </main>
         <div class="todobtn">
@@ -58,5 +70,5 @@
     </footer>
     <!-- <script src="./src/js/index.js"></script> -->
 </body>
-
+<script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </html>
