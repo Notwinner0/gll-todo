@@ -43,7 +43,7 @@ export const storeSave = (currentState, updateData, name, id) => {
             ...currentState,
             [name]: {
                 ...currentState[name],
-                todos: newTodos // fresh object
+                todos: newTodos // fresh object (store/state)
             }
         };
     }
@@ -57,7 +57,7 @@ export const storeRemove = (currentState, name, id) => {
             ...currentState,
             [name]: {
                 ...currentState[name],
-                todos: updatedTodos // fresh object
+                todos: updatedTodos // fresh object (store/state)
             }
         };
 }
