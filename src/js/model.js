@@ -1,11 +1,9 @@
 /**
- * Generates a unique ID from a timestamp and a random number.
- * * @param {number} timestamp - The current timestamp (e.g., from Date.now()).
- * @param {number} randomNumber - A random number (e.g., from Math.random()).
+ * Generates a unique ID from a state.
+ * @param {object} state - The current state.
  * @returns {string} The unique ID.
  */
-const generateUniqueId = (timestamp, randomNumber) => {
-  const timestampPart = timestamp.toString(36);
-  const randomPart = randomNumber.toString(36).substring(2, 9);
-  return timestampPart + randomPart;
-};
+const generateId = (state) =>
+    state.todos.length === 0
+        ? 1
+        : Math.max(...state.todos.map(t => t.id)) + 1;
