@@ -64,3 +64,105 @@ const _removeItem = (id, list) => {
     if (elem)
         list.removeChild(elem);
 };
+
+const initViewState = (template) => { // reference collection
+  return {
+    template,
+    $todoList: qs(".todo-list")(document),
+    $todoItemCounter: qs(".todo-count")(document),
+    $clearCompleted: qs(".clear-completed")(document),
+    $main: qs(".main")(document),
+    $footer: qs(".footer")(document),
+    $toggleAllInput: qs(".toggle-all")(document),
+    $toggleAll: qs(".toggle-all-label")(document),
+    $newTodo: qs(".new-todo")(document),
+  };
+}
+
+const viewRender = (viewState, command, parameter) => {
+  switch (command) {
+    case "showEntries":
+      viewState.$todoList.innerHTML = viewState.template.show(parameter);
+      break;
+    case "updateElementCount":
+      viewState.$todoItemCounter.innerHTML = viewState.template.itemCounter(parameter);
+      break;
+    case "contentBlockVisibility":
+      viewState.$main.style.display =
+      viewState.$footer.style.display = parameter.visible ? "block" : "none";
+      break;
+    case "toggleAll":
+      viewState.$toggleAllInput.checked = parameter.checked;
+      break;
+    case "clearNewTodo":
+      viewState.$newTodo.value = "";
+      break;
+    case "removeItem":
+      _removeItem(parameter, viewState.$todoList);
+      break;
+    case "setFilter":
+      _setFilter(parameter);
+      break;
+    case "elementComplete":
+      _elementComplete(parameter.id, parameter.completed);
+      break;
+    case "editItem":
+      _editItem(parameter.id, parameter.title);
+      break;
+    case "editItemDone":
+      _editItemDone(parameter.id, parameter.title);
+      break;
+    case "clearCompletedButton":
+      _clearCompletedButton(viewState, parameter.completed, parameter.visible);
+      break;
+  }
+}
+
+function viewBindCallback(viewState, event, handler) {
+        switch (event) {
+            case "newTodo":
+                $on(viewState.$newTodo, "change", () => handler(viewState.$newTodo.value))();
+                break;
+            case "removeCompleted":
+                $on(viewState.$clearCompleted, "click", handler)();
+                break;
+            case "toggleAll":
+                $on(viewState.$toggleAll, "click", () => {
+                    viewState.$toggleAllInput.click();
+                    handler({ completed: viewState.$toggleAllInput.checked });
+                })();
+                break;
+            case "itemEdit":
+                $delegate("li label", "dblclick")((e) => handler({ id: _itemId(e.target) }))(viewState.$todolist)();
+                break;
+            case "itemRemove":
+                $delegate(".destroy", "click")((e) => handler({ id: _itemId(e.target) }))(viewState.$todoList)();
+                break;
+            case "itemToggle":
+                $delegate(".toggle", "click")((e) => handler({ id: _itemId(e.target), completed: e.target.checked }))(viewState.$todoList)();
+                break;
+            case "itemEditDone":
+                $delegate("li .edit", "blur")(function (e) {
+                    if (!e.target.dataset.iscanceled) {
+                        handler({
+                            id: _itemId(e.target),
+                            title: e.target.value,
+                        });
+                    }
+                })(viewState.$todoList)();
+                $delegate("li .edit", "keypress")(function (e) {
+                    if (e.keyCode === ENTER_KEY)
+                        e.target.blur();
+                })(viewState.$todoList)();
+                break;
+            case "itemEditCancel":
+                $delegate("li .edit", "keyup")((e) => {
+                    if (e.keyCode === ESCAPE_KEY) {
+                        e.target.dataset.iscanceled = true;
+                        e.target.blur();
+                        handler({ id: _itemId(e.target) });
+                    }
+                })(viewState.$todoList)();
+                break;
+        }
+}
