@@ -142,7 +142,7 @@ function viewBindCallback(viewState, event, handler) {
                 $delegate(".toggle", "click")((e) => handler({ id: _itemId(e.target), completed: e.target.checked }))(viewState.$todoList)();
                 break;
             case "itemEditDone":
-                $delegate("li .edit", "blur")(function (e) {
+                $delegate("li .edit", "blur")((e) => {
                     if (!e.target.dataset.iscanceled) {
                         handler({
                             id: _itemId(e.target),
@@ -150,7 +150,7 @@ function viewBindCallback(viewState, event, handler) {
                         });
                     }
                 })(viewState.$todoList)();
-                $delegate("li .edit", "keypress")(function (e) {
+                $delegate("li .edit", "keypress")((e) => {
                     if (e.keyCode === ENTER_KEY)
                         e.target.blur();
                 })(viewState.$todoList)();

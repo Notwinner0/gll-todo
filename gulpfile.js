@@ -1,6 +1,6 @@
 const { src, dest, watch, series, parallel } = require('gulp');
-const path = require('path');
-const { exec } = require('child_process'); 
+const _path = require('node:path');
+const { exec } = require('node:child_process'); 
 
 
 

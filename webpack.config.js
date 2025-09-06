@@ -1,6 +1,5 @@
-const path = require('path');
+const path = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const autoprefixer = require('autoprefixer');
@@ -9,7 +8,7 @@ const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 const REPOSITORY_NAME = 'gll-todo';
 
-module.exports = (env, argv) => {
+module.exports = (_env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
@@ -52,7 +51,7 @@ module.exports = (env, argv) => {
           test: /\.js$/,
           exclude: [
             /node_modules/,
-            /\.yarn[\\\/].*?[\\\/]virtual[\\\/]/
+            /\.yarn[\\/].*?[\\/]virtual[\\/]/
           ],
           use: {
             loader: 'babel-loader',
@@ -110,7 +109,7 @@ module.exports = (env, argv) => {
                       tag: 'link',
                       attribute: 'href',
                       type: 'src',
-                      filter: (tag, attribute, attributes) => {
+                      filter: (_tag, _attribute, attributes) => {
                         return attributes.rel === 'stylesheet';
                       },
                     },

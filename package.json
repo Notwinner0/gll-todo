@@ -3,7 +3,7 @@
   "main": "index.js",
   "version": "1.0.0",
   "license": "MIT",
-  "packageManager": "yarn@4.9.2",
+  "packageManager": "yarn@4.9.4+sha512.7b1cb0b62abba6a537b3a2ce00811a843bea02bcf53138581a6ae5b1bf563f734872bd47de49ce32a9ca9dcaff995aa789577ffb16811da7c603dcf69e73750b",
   "dependencies": {
     "core-js": "^3.44.0"
   },
@@ -34,6 +34,7 @@
     "build": "webpack --config webpack.config.js --mode production",
     "gulp": "gulp",
     "gulp:dev": "gulp dev",
-    "gulp:build": "gulp build"
+    "gulp:build": "gulp build",
+    "lint": "npx @biomejs/biome lint"
   }
 }

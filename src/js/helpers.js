@@ -74,6 +74,6 @@ const remove = (array, thing) => {
 };
 
 // looping on nodes by chaining
-function forEachElement(selector, nodeList, evals) {
+function _forEachElement(selector, nodeList, evals) {
   return Array.from(nodeList.querySelectorAll(selector)).map(evals);
 }
